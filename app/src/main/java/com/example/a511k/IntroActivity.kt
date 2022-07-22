@@ -33,8 +33,7 @@ class IntroActivity : AppCompatActivity() {
         dotsLayout = findViewById(R.id.dots)
 
         textView.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            viewPager?.currentItem = 2
         }
 
         button = findViewById(R.id.get_started_btn)
@@ -74,13 +73,18 @@ class IntroActivity : AppCompatActivity() {
             addDots(position)
             if (position == 0) {
                 button?.visibility = View.INVISIBLE
+                textView?.visibility = View.VISIBLE
             } else if (position == 1) {
                 button?.visibility = View.INVISIBLE
+                textView?.visibility = View.VISIBLE
+
             } else {
                 animation =
                     AnimationUtils.loadAnimation(this@IntroActivity, R.anim.animation)
                 button?.animation  = animation
                 button?.visibility  = View.VISIBLE
+                textView?.visibility = View.INVISIBLE
+
             }
         }
 
